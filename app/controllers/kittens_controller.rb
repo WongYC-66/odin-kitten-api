@@ -8,12 +8,13 @@ class KittensController < ApplicationController
   end
 
   def create
-    @kitten = Kitten.create(params)
+    @kitten = Kitten.new(kitten_params)
     if @kitten.save
+      flash.notice = "Success: created"
       redirect_to @kitten
     else
       flash[:notice] = "Failed to save, try again"
-      render new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,15 +27,25 @@ class KittensController < ApplicationController
   end
 
   def update
-    @kitten = Kitten.update(params)
-    if @kitten.
+    @kitten = Kitten.find(params[:id])
+    if @kitten.update(kitten_params)
+      flash.notice = "Success: updated"
       redirect_to @kitten
     else
       flash.notice = "Failed to save, try again"
-      render new
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
+    @kitten = Kitten.find(params[:id])
+    @kitten.destroy
+    flash.notice = "Deleted a meow"
+    redirect_to root_path, status: :see_other
   end
+
+  private
+    def kitten_params
+      params.require(:kitten).permit(:name, :age, :cuteness, :softness)
+    end
 end

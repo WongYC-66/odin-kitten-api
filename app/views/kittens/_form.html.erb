@@ -2,18 +2,30 @@
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
+    <% @kitten.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
   <div>
     <%= form.label :age %>
     <%= form.number_field :age, in: 1..10, step: 1 %>
+    <% @kitten.errors.full_messages_for(:age).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
   <div>
     <%= form.label :cuteness %>
     <%= form.number_field :cuteness, in: 1..10, step: 1 %>
+    <% @kitten.errors.full_messages_for(:cuteness).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
   <div>
     <%= form.label :softness %>
     <%= form.number_field :softness, in: 1..10, step: 1 %>
   </div>
   <%= form.submit %>
+  <% @kitten.errors.full_messages_for(:softness).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
 <% end %>

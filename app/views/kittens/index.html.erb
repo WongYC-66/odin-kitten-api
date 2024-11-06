@@ -12,6 +12,10 @@
     <li>
       Softness : <%= kitten.softness %>
     </li>
+    <%= link_to "Destroy", kitten_path(kitten), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
   </div>
   <% end %>
 </ul>
