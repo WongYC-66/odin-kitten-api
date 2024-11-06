@@ -1,0 +1,17 @@
+<ul>
+  <% @kittens.each do |kitten| %>
+  <div>
+   
+    <h3><%= link_to(kitten.name, "/kittens/#{kitten.id}") %></h3>
+    <li>
+      Age : <%= kitten.age %> months
+    </li>
+    <li>
+      Cuteness : <%= kitten.cuteness %>
+    </li>
+    <li>
+      Softness : <%= kitten.softness %>
+    </li>
+  </div>
+  <% end %>
+</ul>

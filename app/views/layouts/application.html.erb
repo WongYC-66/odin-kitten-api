@@ -18,6 +18,18 @@
   </head>
 
   <body>
+    <%# Flash %>
+    <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
+    <h1><%= link_to "Kitten", root_path %></h1>
+    <h3><%= link_to "Create new kitten", new_kitten_path %></h3>
+
+    <%# Main body %>
     <%= yield %>
   </body>
 </html>

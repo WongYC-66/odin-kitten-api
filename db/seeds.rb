@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "Start seeding ... "
+
+kitten_names = [ "Poppy", "Bella", "Misty", "Molly", "Daisy", "Tilly" ]
+
+kitten_names.each do |kitten|
+  Kitten.find_or_create_by!(
+    name: kitten,
+    age: rand(12) + 1,
+    cuteness: rand(10) + 1,
+    softness: rand(10) + 1,
+  )
+end
+
+
+puts "Ok. Seeding completed"
